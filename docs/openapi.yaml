@@ -1,0 +1,3696 @@
+openapi: 3.0.3
+info:
+  title: SmartQC Demo API
+  version: 1.0.0
+  description: Public portfolio API for a simulated industrial quality inspection
+    platform.
+paths:
+  /api/ai-models/:
+    get:
+      operationId: ai_models_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - ai-models
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAIModelList'
+          description: ''
+    post:
+      operationId: ai_models_create
+      tags:
+      - ai-models
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+  /api/ai-models/{id}/:
+    get:
+      operationId: ai_models_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - ai-models
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+    put:
+      operationId: ai_models_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - ai-models
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AIModel'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+    patch:
+      operationId: ai_models_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - ai-models
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAIModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAIModel'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAIModel'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIModel'
+          description: ''
+    delete:
+      operationId: ai_models_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ai model.
+        required: true
+      tags:
+      - ai-models
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/annotations/:
+    get:
+      operationId: annotations_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - annotations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAnnotationList'
+          description: ''
+    post:
+      operationId: annotations_create
+      tags:
+      - annotations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Annotation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Annotation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Annotation'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Annotation'
+          description: ''
+  /api/annotations/{id}/:
+    get:
+      operationId: annotations_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this annotation.
+        required: true
+      tags:
+      - annotations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Annotation'
+          description: ''
+    put:
+      operationId: annotations_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this annotation.
+        required: true
+      tags:
+      - annotations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Annotation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Annotation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Annotation'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Annotation'
+          description: ''
+    patch:
+      operationId: annotations_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this annotation.
+        required: true
+      tags:
+      - annotations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnotation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnotation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnotation'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Annotation'
+          description: ''
+    delete:
+      operationId: annotations_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this annotation.
+        required: true
+      tags:
+      - annotations
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/cameras/:
+    get:
+      operationId: cameras_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - cameras
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCameraList'
+          description: ''
+    post:
+      operationId: cameras_create
+      tags:
+      - cameras
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Camera'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Camera'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Camera'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camera'
+          description: ''
+  /api/cameras/{id}/:
+    get:
+      operationId: cameras_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this camera.
+        required: true
+      tags:
+      - cameras
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camera'
+          description: ''
+    put:
+      operationId: cameras_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this camera.
+        required: true
+      tags:
+      - cameras
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Camera'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Camera'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Camera'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camera'
+          description: ''
+    patch:
+      operationId: cameras_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this camera.
+        required: true
+      tags:
+      - cameras
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCamera'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCamera'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCamera'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Camera'
+          description: ''
+    delete:
+      operationId: cameras_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this camera.
+        required: true
+      tags:
+      - cameras
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/dashboard/stats/:
+    get:
+      operationId: dashboard_stats_retrieve
+      tags:
+      - dashboard
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/demo/camera/capture/:
+    get:
+      operationId: demo_camera_capture_retrieve
+      tags:
+      - demo
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+          description: ''
+  /api/demo/laser/profile/:
+    get:
+      operationId: demo_laser_profile_retrieve
+      tags:
+      - demo
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/demo/plc/:
+    get:
+      operationId: demo_plc_retrieve
+      tags:
+      - demo
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    post:
+      operationId: demo_plc_create
+      tags:
+      - demo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PLCWriteRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PLCWriteRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PLCWriteRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/detections/:
+    get:
+      operationId: detections_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - detections
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDetectionList'
+          description: ''
+    post:
+      operationId: detections_create
+      tags:
+      - detections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Detection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Detection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Detection'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Detection'
+          description: ''
+  /api/detections/{id}/:
+    get:
+      operationId: detections_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this detection.
+        required: true
+      tags:
+      - detections
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Detection'
+          description: ''
+    put:
+      operationId: detections_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this detection.
+        required: true
+      tags:
+      - detections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Detection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Detection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Detection'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Detection'
+          description: ''
+    patch:
+      operationId: detections_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this detection.
+        required: true
+      tags:
+      - detections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDetection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDetection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDetection'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Detection'
+          description: ''
+    delete:
+      operationId: detections_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this detection.
+        required: true
+      tags:
+      - detections
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/device-events/:
+    get:
+      operationId: device_events_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - device-events
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDeviceEventList'
+          description: ''
+    post:
+      operationId: device_events_create
+      tags:
+      - device-events
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceEvent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeviceEvent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeviceEvent'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceEvent'
+          description: ''
+  /api/device-events/{id}/:
+    get:
+      operationId: device_events_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this device event.
+        required: true
+      tags:
+      - device-events
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceEvent'
+          description: ''
+    put:
+      operationId: device_events_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this device event.
+        required: true
+      tags:
+      - device-events
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceEvent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DeviceEvent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DeviceEvent'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceEvent'
+          description: ''
+    patch:
+      operationId: device_events_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this device event.
+        required: true
+      tags:
+      - device-events
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDeviceEvent'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDeviceEvent'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDeviceEvent'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceEvent'
+          description: ''
+    delete:
+      operationId: device_events_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this device event.
+        required: true
+      tags:
+      - device-events
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/health/:
+    get:
+      operationId: health_retrieve
+      tags:
+      - health
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/infer/:
+    post:
+      operationId: infer_create
+      tags:
+      - infer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StandaloneInferenceRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StandaloneInferenceRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/inspection-images/:
+    get:
+      operationId: inspection_images_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - inspection-images
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInspectionImageList'
+          description: ''
+    post:
+      operationId: inspection_images_create
+      tags:
+      - inspection-images
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InspectionImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InspectionImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/InspectionImage'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InspectionImage'
+          description: ''
+  /api/inspection-images/{id}/:
+    get:
+      operationId: inspection_images_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection image.
+        required: true
+      tags:
+      - inspection-images
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InspectionImage'
+          description: ''
+    put:
+      operationId: inspection_images_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection image.
+        required: true
+      tags:
+      - inspection-images
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InspectionImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InspectionImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/InspectionImage'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InspectionImage'
+          description: ''
+    patch:
+      operationId: inspection_images_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection image.
+        required: true
+      tags:
+      - inspection-images
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInspectionImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedInspectionImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedInspectionImage'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InspectionImage'
+          description: ''
+    delete:
+      operationId: inspection_images_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection image.
+        required: true
+      tags:
+      - inspection-images
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/inspections/:
+    get:
+      operationId: inspections_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - inspections
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInspectionList'
+          description: ''
+    post:
+      operationId: inspections_create
+      tags:
+      - inspections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inspection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Inspection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Inspection'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inspection'
+          description: ''
+  /api/inspections/{id}/:
+    get:
+      operationId: inspections_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection.
+        required: true
+      tags:
+      - inspections
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InspectionDetail'
+          description: ''
+    put:
+      operationId: inspections_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection.
+        required: true
+      tags:
+      - inspections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Inspection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Inspection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Inspection'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inspection'
+          description: ''
+    patch:
+      operationId: inspections_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection.
+        required: true
+      tags:
+      - inspections
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInspection'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedInspection'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedInspection'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inspection'
+          description: ''
+    delete:
+      operationId: inspections_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this inspection.
+        required: true
+      tags:
+      - inspections
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/lasers/:
+    get:
+      operationId: lasers_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - lasers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLaserList'
+          description: ''
+    post:
+      operationId: lasers_create
+      tags:
+      - lasers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Laser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Laser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Laser'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Laser'
+          description: ''
+  /api/lasers/{id}/:
+    get:
+      operationId: lasers_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this laser.
+        required: true
+      tags:
+      - lasers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Laser'
+          description: ''
+    put:
+      operationId: lasers_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this laser.
+        required: true
+      tags:
+      - lasers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Laser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Laser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Laser'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Laser'
+          description: ''
+    patch:
+      operationId: lasers_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this laser.
+        required: true
+      tags:
+      - lasers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLaser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLaser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLaser'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Laser'
+          description: ''
+    delete:
+      operationId: lasers_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this laser.
+        required: true
+      tags:
+      - lasers
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/machines/:
+    get:
+      operationId: machines_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - machines
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedMachineList'
+          description: ''
+    post:
+      operationId: machines_create
+      tags:
+      - machines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Machine'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+  /api/machines/{id}/:
+    get:
+      operationId: machines_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this machine.
+        required: true
+      tags:
+      - machines
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+    put:
+      operationId: machines_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this machine.
+        required: true
+      tags:
+      - machines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Machine'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+    patch:
+      operationId: machines_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this machine.
+        required: true
+      tags:
+      - machines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMachine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMachine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMachine'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+    delete:
+      operationId: machines_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this machine.
+        required: true
+      tags:
+      - machines
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/machines/{id}/simulate-error/:
+    post:
+      operationId: machines_simulate_error_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this machine.
+        required: true
+      tags:
+      - machines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Machine'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+  /api/machines/{id}/start/:
+    post:
+      operationId: machines_start_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this machine.
+        required: true
+      tags:
+      - machines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Machine'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+  /api/machines/{id}/stop/:
+    post:
+      operationId: machines_stop_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this machine.
+        required: true
+      tags:
+      - machines
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Machine'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Machine'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+  /api/operator-heartbeats/:
+    get:
+      operationId: operator_heartbeats_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - operator-heartbeats
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOperatorHeartbeatList'
+          description: ''
+    post:
+      operationId: operator_heartbeats_create
+      tags:
+      - operator-heartbeats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperatorHeartbeat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OperatorHeartbeat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OperatorHeartbeat'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorHeartbeat'
+          description: ''
+  /api/operator-heartbeats/{id}/:
+    get:
+      operationId: operator_heartbeats_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this operator heartbeat.
+        required: true
+      tags:
+      - operator-heartbeats
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorHeartbeat'
+          description: ''
+    put:
+      operationId: operator_heartbeats_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this operator heartbeat.
+        required: true
+      tags:
+      - operator-heartbeats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperatorHeartbeat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OperatorHeartbeat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OperatorHeartbeat'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorHeartbeat'
+          description: ''
+    patch:
+      operationId: operator_heartbeats_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this operator heartbeat.
+        required: true
+      tags:
+      - operator-heartbeats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOperatorHeartbeat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOperatorHeartbeat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOperatorHeartbeat'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperatorHeartbeat'
+          description: ''
+    delete:
+      operationId: operator_heartbeats_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this operator heartbeat.
+        required: true
+      tags:
+      - operator-heartbeats
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/projects/:
+    get:
+      operationId: projects_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - projects
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProjectList'
+          description: ''
+    post:
+      operationId: projects_create
+      tags:
+      - projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Project'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+  /api/projects/{id}/:
+    get:
+      operationId: projects_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+    put:
+      operationId: projects_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Project'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Project'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+    patch:
+      operationId: projects_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProject'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProject'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProject'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: ''
+    delete:
+      operationId: projects_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this project.
+        required: true
+      tags:
+      - projects
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/recipes/:
+    get:
+      operationId: recipes_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - recipes
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRecipeList'
+          description: ''
+    post:
+      operationId: recipes_create
+      tags:
+      - recipes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+          description: ''
+  /api/recipes/{id}/:
+    get:
+      operationId: recipes_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipes
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+          description: ''
+    put:
+      operationId: recipes_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+          description: ''
+    patch:
+      operationId: recipes_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRecipe'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRecipe'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRecipe'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+          description: ''
+    delete:
+      operationId: recipes_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipes
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/storage/download/:
+    get:
+      operationId: storage_download_retrieve
+      tags:
+      - storage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+          description: ''
+  /api/storage/files/:
+    get:
+      operationId: storage_files_list
+      tags:
+      - storage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageObject'
+          description: ''
+    post:
+      operationId: storage_files_create
+      tags:
+      - storage
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/StorageUploadRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StorageUploadRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageUploadRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageObject'
+          description: ''
+    delete:
+      operationId: storage_files_destroy
+      tags:
+      - storage
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/upload-image/:
+    post:
+      operationId: upload_image_create
+      tags:
+      - upload-image
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadAndInspectRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UploadAndInspectRequest'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InspectionDetail'
+          description: ''
+components:
+  schemas:
+    AIModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        project_code:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        version:
+          type: string
+          maxLength: 30
+        framework:
+          $ref: '#/components/schemas/FrameworkEnum'
+        model_type:
+          type: string
+          maxLength: 80
+        file_url:
+          type: string
+          maxLength: 500
+        checksum:
+          type: string
+          maxLength: 128
+        status:
+          $ref: '#/components/schemas/AIModelStatusEnum'
+        metrics: {}
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        project:
+          type: integer
+      required:
+      - created_at
+      - id
+      - name
+      - project
+      - project_code
+      - version
+    AIModelStatusEnum:
+      enum:
+      - VALIDATING
+      - READY
+      - RETIRED
+      - FAILED
+      type: string
+      description: |-
+        * `VALIDATING` - Validating
+        * `READY` - Ready
+        * `RETIRED` - Retired
+        * `FAILED` - Failed
+    Annotation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        label:
+          type: string
+          maxLength: 100
+        x1:
+          type: number
+          format: double
+        y1:
+          type: number
+          format: double
+        x2:
+          type: number
+          format: double
+        y2:
+          type: number
+          format: double
+        created_by:
+          type: string
+          maxLength: 120
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        image:
+          type: integer
+      required:
+      - created_at
+      - id
+      - image
+      - label
+      - x1
+      - x2
+      - y1
+      - y2
+    Camera:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 120
+        serial_number:
+          type: string
+          maxLength: 100
+        station:
+          type: string
+          maxLength: 80
+        status:
+          $ref: '#/components/schemas/CameraStatusEnum'
+        exposure_us:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        mock_enabled:
+          type: boolean
+        configuration: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+      required:
+      - created_at
+      - id
+      - machine
+      - name
+      - serial_number
+    CameraStatusEnum:
+      enum:
+      - READY
+      - CAPTURING
+      - ERROR
+      - OFFLINE
+      type: string
+      description: |-
+        * `READY` - Ready
+        * `CAPTURING` - Capturing
+        * `ERROR` - Error
+        * `OFFLINE` - Offline
+    DecisionEnum:
+      enum:
+      - UNKNOWN
+      - GOOD
+      - DEFECT
+      type: string
+      description: |-
+        * `UNKNOWN` - Unknown
+        * `GOOD` - Good
+        * `DEFECT` - Defect
+    Detection:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        label:
+          type: string
+          maxLength: 100
+        confidence:
+          type: number
+          format: double
+        x1:
+          type: number
+          format: double
+        y1:
+          type: number
+          format: double
+        x2:
+          type: number
+          format: double
+        y2:
+          type: number
+          format: double
+        area_px:
+          type: number
+          format: double
+        metadata: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        image:
+          type: integer
+      required:
+      - created_at
+      - id
+      - image
+      - label
+      - x1
+      - x2
+      - y1
+      - y2
+    DeviceEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        machine_code:
+          type: string
+          readOnly: true
+        device_type:
+          type: string
+          maxLength: 30
+        severity:
+          $ref: '#/components/schemas/SeverityEnum'
+        message:
+          type: string
+          maxLength: 500
+        metadata: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+      required:
+      - created_at
+      - id
+      - machine
+      - machine_code
+      - message
+    FrameworkEnum:
+      enum:
+      - OPENCV
+      - YOLO
+      - PYTORCH
+      - ONNX
+      type: string
+      description: |-
+        * `OPENCV` - OpenCV
+        * `YOLO` - Ultralytics YOLO
+        * `PYTORCH` - PyTorch
+        * `ONNX` - ONNX Runtime
+    Inspection:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        machine_code:
+          type: string
+          readOnly: true
+        project_code:
+          type: string
+          readOnly: true
+        image_count:
+          type: integer
+          readOnly: true
+        serial_number:
+          type: string
+          maxLength: 120
+        operator_name:
+          type: string
+          maxLength: 120
+        status:
+          $ref: '#/components/schemas/Status7bfEnum'
+        decision:
+          $ref: '#/components/schemas/DecisionEnum'
+        defect_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+        cycle_time_ms:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        notes:
+          type: string
+        metadata: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+        project:
+          type: integer
+        recipe:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - id
+      - image_count
+      - machine
+      - machine_code
+      - project
+      - project_code
+      - serial_number
+    InspectionDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        machine_code:
+          type: string
+          readOnly: true
+        project_code:
+          type: string
+          readOnly: true
+        image_count:
+          type: integer
+          readOnly: true
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/InspectionImage'
+          readOnly: true
+        serial_number:
+          type: string
+          maxLength: 120
+        operator_name:
+          type: string
+          maxLength: 120
+        status:
+          $ref: '#/components/schemas/Status7bfEnum'
+        decision:
+          $ref: '#/components/schemas/DecisionEnum'
+        defect_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+        cycle_time_ms:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        notes:
+          type: string
+        metadata: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+        project:
+          type: integer
+        recipe:
+          type: integer
+          nullable: true
+      required:
+      - created_at
+      - id
+      - image_count
+      - images
+      - machine
+      - machine_code
+      - project
+      - project_code
+      - serial_number
+    InspectionImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        detections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Detection'
+          readOnly: true
+        annotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Annotation'
+          readOnly: true
+        image_url:
+          type: string
+          nullable: true
+          readOnly: true
+        image:
+          type: string
+          format: uri
+        storage_key:
+          type: string
+          maxLength: 500
+        source:
+          $ref: '#/components/schemas/SourceEnum'
+        side:
+          type: string
+          maxLength: 60
+        width:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        height:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        inspection:
+          type: integer
+      required:
+      - annotations
+      - created_at
+      - detections
+      - id
+      - image
+      - image_url
+      - inspection
+    Laser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 120
+        serial_number:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/LaserStatusEnum'
+        mock_enabled:
+          type: boolean
+        configuration: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+      required:
+      - created_at
+      - id
+      - machine
+      - name
+      - serial_number
+    LaserStatusEnum:
+      enum:
+      - READY
+      - SCANNING
+      - ERROR
+      - OFFLINE
+      type: string
+      description: |-
+        * `READY` - Ready
+        * `SCANNING` - Scanning
+        * `ERROR` - Error
+        * `OFFLINE` - Offline
+    Machine:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        camera_count:
+          type: integer
+          readOnly: true
+        laser_count:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 120
+        code:
+          type: string
+          maxLength: 50
+        location:
+          type: string
+          maxLength: 160
+        status:
+          $ref: '#/components/schemas/MachineStatusEnum'
+        plc_mode:
+          $ref: '#/components/schemas/PlcModeEnum'
+        is_active:
+          type: boolean
+        configuration: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - camera_count
+      - code
+      - created_at
+      - id
+      - laser_count
+      - name
+      - updated_at
+    MachineStatusEnum:
+      enum:
+      - IDLE
+      - RUNNING
+      - ERROR
+      - OFFLINE
+      type: string
+      description: |-
+        * `IDLE` - Idle
+        * `RUNNING` - Running
+        * `ERROR` - Error
+        * `OFFLINE` - Offline
+    OperatorHeartbeat:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        machine_code:
+          type: string
+          readOnly: true
+        operator_name:
+          type: string
+          maxLength: 120
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        message:
+          type: string
+          maxLength: 300
+        last_seen:
+          type: string
+          format: date-time
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+      required:
+      - created_at
+      - id
+      - last_seen
+      - machine
+      - machine_code
+      - operator_name
+    PLCWriteRequest:
+      type: object
+      properties:
+        tag:
+          type: string
+        value: {}
+      required:
+      - tag
+      - value
+    PaginatedAIModelList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIModel'
+    PaginatedAnnotationList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Annotation'
+    PaginatedCameraList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Camera'
+    PaginatedDetectionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Detection'
+    PaginatedDeviceEventList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceEvent'
+    PaginatedInspectionImageList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/InspectionImage'
+    PaginatedInspectionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Inspection'
+    PaginatedLaserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Laser'
+    PaginatedMachineList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Machine'
+    PaginatedOperatorHeartbeatList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/OperatorHeartbeat'
+    PaginatedProjectList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+    PaginatedRecipeList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recipe'
+    PatchedAIModel:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        project_code:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        version:
+          type: string
+          maxLength: 30
+        framework:
+          $ref: '#/components/schemas/FrameworkEnum'
+        model_type:
+          type: string
+          maxLength: 80
+        file_url:
+          type: string
+          maxLength: 500
+        checksum:
+          type: string
+          maxLength: 128
+        status:
+          $ref: '#/components/schemas/AIModelStatusEnum'
+        metrics: {}
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        project:
+          type: integer
+    PatchedAnnotation:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        label:
+          type: string
+          maxLength: 100
+        x1:
+          type: number
+          format: double
+        y1:
+          type: number
+          format: double
+        x2:
+          type: number
+          format: double
+        y2:
+          type: number
+          format: double
+        created_by:
+          type: string
+          maxLength: 120
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        image:
+          type: integer
+    PatchedCamera:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 120
+        serial_number:
+          type: string
+          maxLength: 100
+        station:
+          type: string
+          maxLength: 80
+        status:
+          $ref: '#/components/schemas/CameraStatusEnum'
+        exposure_us:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        mock_enabled:
+          type: boolean
+        configuration: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+    PatchedDetection:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        label:
+          type: string
+          maxLength: 100
+        confidence:
+          type: number
+          format: double
+        x1:
+          type: number
+          format: double
+        y1:
+          type: number
+          format: double
+        x2:
+          type: number
+          format: double
+        y2:
+          type: number
+          format: double
+        area_px:
+          type: number
+          format: double
+        metadata: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        image:
+          type: integer
+    PatchedDeviceEvent:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        machine_code:
+          type: string
+          readOnly: true
+        device_type:
+          type: string
+          maxLength: 30
+        severity:
+          $ref: '#/components/schemas/SeverityEnum'
+        message:
+          type: string
+          maxLength: 500
+        metadata: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+    PatchedInspection:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        machine_code:
+          type: string
+          readOnly: true
+        project_code:
+          type: string
+          readOnly: true
+        image_count:
+          type: integer
+          readOnly: true
+        serial_number:
+          type: string
+          maxLength: 120
+        operator_name:
+          type: string
+          maxLength: 120
+        status:
+          $ref: '#/components/schemas/Status7bfEnum'
+        decision:
+          $ref: '#/components/schemas/DecisionEnum'
+        defect_count:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+          nullable: true
+        cycle_time_ms:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        notes:
+          type: string
+        metadata: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+        project:
+          type: integer
+        recipe:
+          type: integer
+          nullable: true
+    PatchedInspectionImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        detections:
+          type: array
+          items:
+            $ref: '#/components/schemas/Detection'
+          readOnly: true
+        annotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Annotation'
+          readOnly: true
+        image_url:
+          type: string
+          nullable: true
+          readOnly: true
+        image:
+          type: string
+          format: uri
+        storage_key:
+          type: string
+          maxLength: 500
+        source:
+          $ref: '#/components/schemas/SourceEnum'
+        side:
+          type: string
+          maxLength: 60
+        width:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        height:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        inspection:
+          type: integer
+    PatchedLaser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 120
+        serial_number:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/LaserStatusEnum'
+        mock_enabled:
+          type: boolean
+        configuration: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+    PatchedMachine:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        camera_count:
+          type: integer
+          readOnly: true
+        laser_count:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 120
+        code:
+          type: string
+          maxLength: 50
+        location:
+          type: string
+          maxLength: 160
+        status:
+          $ref: '#/components/schemas/MachineStatusEnum'
+        plc_mode:
+          $ref: '#/components/schemas/PlcModeEnum'
+        is_active:
+          type: boolean
+        configuration: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedOperatorHeartbeat:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        machine_code:
+          type: string
+          readOnly: true
+        operator_name:
+          type: string
+          maxLength: 120
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        message:
+          type: string
+          maxLength: 300
+        last_seen:
+          type: string
+          format: date-time
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        machine:
+          type: integer
+    PatchedProject:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        recipe_count:
+          type: integer
+          readOnly: true
+        model_count:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        code:
+          type: string
+          maxLength: 60
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/ProjectStatusEnum'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          type: integer
+          nullable: true
+    PatchedRecipe:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        project_code:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        version:
+          type: string
+          default: 1.0.0
+          maxLength: 30
+        configuration: {}
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        project:
+          type: integer
+    PlcModeEnum:
+      enum:
+      - MOCK
+      - SOFTWARE
+      - HARDWARE
+      type: string
+      description: |-
+        * `MOCK` - Mock
+        * `SOFTWARE` - Software Trigger
+        * `HARDWARE` - Hardware Trigger
+    Project:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        recipe_count:
+          type: integer
+          readOnly: true
+        model_count:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        code:
+          type: string
+          maxLength: 60
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/ProjectStatusEnum'
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          type: integer
+          nullable: true
+      required:
+      - code
+      - created_at
+      - id
+      - model_count
+      - name
+      - recipe_count
+      - updated_at
+    ProjectStatusEnum:
+      enum:
+      - DRAFT
+      - ACTIVE
+      - ARCHIVED
+      type: string
+      description: |-
+        * `DRAFT` - Draft
+        * `ACTIVE` - Active
+        * `ARCHIVED` - Archived
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        project_code:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 150
+        version:
+          type: string
+          default: 1.0.0
+          maxLength: 30
+        configuration: {}
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        project:
+          type: integer
+      required:
+      - created_at
+      - id
+      - name
+      - project
+      - project_code
+      - updated_at
+    SeverityEnum:
+      enum:
+      - INFO
+      - WARNING
+      - ERROR
+      type: string
+      description: |-
+        * `INFO` - Info
+        * `WARNING` - Warning
+        * `ERROR` - Error
+    SourceEnum:
+      enum:
+      - UPLOAD
+      - MOCK_CAMERA
+      - API
+      type: string
+      description: |-
+        * `UPLOAD` - Upload
+        * `MOCK_CAMERA` - Mock Camera
+        * `API` - API
+    StandaloneInferenceRequest:
+      type: object
+      properties:
+        image:
+          type: string
+          format: uri
+      required:
+      - image
+    StateEnum:
+      enum:
+      - ACTIVE
+      - BREAK
+      - OFFLINE
+      type: string
+      description: |-
+        * `ACTIVE` - Active
+        * `BREAK` - Break
+        * `OFFLINE` - Offline
+    Status7bfEnum:
+      enum:
+      - QUEUED
+      - RUNNING
+      - COMPLETED
+      - FAILED
+      type: string
+      description: |-
+        * `QUEUED` - Queued
+        * `RUNNING` - Running
+        * `COMPLETED` - Completed
+        * `FAILED` - Failed
+    StorageObject:
+      type: object
+      properties:
+        key:
+          type: string
+        size:
+          type: integer
+        last_modified:
+          type: string
+          nullable: true
+      required:
+      - key
+      - size
+    StorageUploadRequest:
+      type: object
+      properties:
+        key:
+          type: string
+        file:
+          type: string
+          format: uri
+      required:
+      - file
+      - key
+    UploadAndInspectRequest:
+      type: object
+      properties:
+        inspection_id:
+          type: integer
+        image:
+          type: string
+          format: uri
+        side:
+          type: string
+          default: surface
+        source:
+          type: string
+          default: UPLOAD
+      required:
+      - image
+      - inspection_id
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
