@@ -167,9 +167,4 @@ AWS_SECRET_ACCESS_KEY=smartqc_demo_password
 pytest
 python manage.py check
 ```
-
-## Resume-ready description
-
-> Developed a modular industrial quality inspection platform using PyQt, Django REST Framework, OpenCV/YOLO, MySQL and AWS S3-compatible storage. Built machine and project management, image inspection, annotation, operator monitoring, mock hardware integrations, REST APIs and database-backed result tracking while separating production IP from the public demo.
-
 See `docs/SECURITY.md` before publishing and `docs/VALIDATION.md` for the completed checks.
